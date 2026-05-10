@@ -110,8 +110,12 @@ export function RSVPForm({ familia, regalos: _regalos, mensajeSobres: _mensajeSo
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: CREAM, padding: "clamp(60px, 10vw, 80px) clamp(16px, 5vw, 40px) clamp(40px, 8vw, 60px)" }}>
-      <div style={{ maxWidth: "480px", margin: "0 auto" }}>
+    <div className="rsvp-form-bold" style={{ minHeight: "100vh", background: CREAM, padding: "clamp(60px, 10vw, 80px) clamp(16px, 5vw, 40px) clamp(40px, 8vw, 60px)" }}>
+      <style>{`
+        @keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
+        .rsvp-form-bold p, .rsvp-form-bold span, .rsvp-form-bold h1, .rsvp-form-bold h2, .rsvp-form-bold label { font-weight: 700 !important; }
+      `}</style>
+      <div style={{ maxWidth: "720px", margin: "0 auto" }}>
 
         {/* ── Header: familia + cupos ── */}
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
@@ -365,7 +369,6 @@ export function RSVPForm({ familia, regalos: _regalos, mensajeSobres: _mensajeSo
             ) : "Confirmar"}
           </button>
 
-          <style>{`@keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }`}</style>
         </form>
       </div>
     </div>

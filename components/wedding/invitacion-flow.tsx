@@ -49,94 +49,114 @@ export function InvitacionFlow({ familia, regalos, mensajeSobres, confirmacion }
   // ── VIEW 1: Envelope landing ───────────────────────────────
   if (view === "invitacion") {
     return (
-      <div
-        className="relative w-full min-h-screen flex items-center justify-center bg-white cursor-pointer"
-        onClick={() => setView("info")}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => e.key === "Enter" && setView("info")}
-        aria-label="Abrir invitación"
-      >
-        <div style={{ width: "100%", maxWidth: "600px" }}>
-          <Image
-            src="/invitacion.png"
-            alt="Invitación de boda Grace & Andrès"
-            width={1366}
-            height={768}
-            style={{ width: "100%", height: "auto", display: "block" }}
-            priority
-          />
+      <>
+        <style>{`
+          .inv-wrapper { overflow: visible; }
+          .inv-img-box { width: 100%; max-width: min(1500px, 96vw); }
+          @media (max-width: 767px) {
+            .inv-wrapper { overflow: hidden; }
+            .inv-img-box { max-width: none; transform: scale(1.3); transform-origin: center center; }
+          }
+        `}</style>
+        <div
+          className="inv-wrapper relative w-full min-h-screen flex items-center justify-center bg-white cursor-pointer"
+          onClick={() => setView("info")}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === "Enter" && setView("info")}
+          aria-label="Abrir invitación"
+        >
+          <div className="inv-img-box">
+            <Image
+              src="/invitacion.png"
+              alt="Invitación de boda Grace & Andrès"
+              width={1366}
+              height={768}
+              style={{ width: "100%", height: "auto", display: "block" }}
+              priority
+            />
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 
   // ── VIEW 2: Info / main invitation spread ──────────────────
   if (view === "info") {
     return (
-      <div className="relative w-full bg-white" style={{ maxWidth: "500px", margin: "0 auto" }}>
-        {/* Image with transparent button overlays */}
-        <div className="relative">
-          <Image
-            src="/info.png"
-            alt="Información de la boda"
-            width={500}
-            height={1100}
-            style={{ width: "100%", height: "auto", display: "block" }}
-            priority
-          />
+      <>
+        <style>{`
+          .inv-spread { max-width: min(1650px, 96vw); margin: 0 auto; }
+          @media (max-width: 767px) { .inv-spread { max-width: 575px; } }
+        `}</style>
+        <div className="inv-spread relative w-full bg-white">
+          {/* Image with transparent button overlays */}
+          <div className="relative">
+            <Image
+              src="/info.png"
+              alt="Información de la boda"
+              width={500}
+              height={1100}
+              style={{ width: "100%", height: "auto", display: "block" }}
+              priority
+            />
 
-          {/* ── Detalles de la boda click area ── */}
-          {/* Circle roughly at center-right, ~43-56% from top */}
-          <button
-            onClick={() => setView("detalles")}
-            style={{
-              position: "absolute",
-              top: "43%",
-              left: "50%",
-              width: "44%",
-              height: "13%",
-              background: "transparent",
-              border: "none",
-              cursor: "pointer",
-            }}
-            aria-label="Ver detalles de la boda"
-          />
+            {/* ── Detalles de la boda click area ── */}
+            <button
+              onClick={() => { setView("detalles"); window.scrollTo(0, 0) }}
+              style={{
+                position: "absolute",
+                top: "43%",
+                left: "50%",
+                width: "44%",
+                height: "13%",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+              }}
+              aria-label="Ver detalles de la boda"
+            />
 
-          {/* ── Confirmación click area ── */}
-          {/* Envelope roughly at bottom-left, ~57-70% from top */}
-          <button
-            onClick={() => setView("confirmacion")}
-            style={{
-              position: "absolute",
-              top: "57%",
-              left: "4%",
-              width: "46%",
-              height: "12%",
-              background: "transparent",
-              border: "none",
-              cursor: "pointer",
-            }}
-            aria-label="Confirmar asistencia"
-          />
+            {/* ── Confirmación click area ── */}
+            <button
+              onClick={() => setView("confirmacion")}
+              style={{
+                position: "absolute",
+                top: "57%",
+                left: "4%",
+                width: "46%",
+                height: "12%",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+              }}
+              aria-label="Confirmar asistencia"
+            />
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 
   // ── VIEW 3: Detalles ───────────────────────────────────────
   if (view === "detalles") {
     return (
-      <div className="relative w-full bg-white" style={{ maxWidth: "500px", margin: "0 auto" }}>
-        <BackButton onClick={() => setView("info")} />
-        <Image
-          src="/detalles.png"
-          alt="Detalles de la boda"
-          width={500}
-          height={1400}
-          style={{ width: "100%", height: "auto", display: "block" }}
-        />
-      </div>
+      <>
+        <style>{`
+          .inv-spread { max-width: min(1650px, 96vw); margin: 0 auto; }
+          @media (max-width: 767px) { .inv-spread { max-width: 575px; } }
+        `}</style>
+        <div className="inv-spread relative w-full bg-white">
+          <BackButton onClick={() => setView("info")} />
+          <Image
+            src="/detalles.png"
+            alt="Detalles de la boda"
+            width={500}
+            height={1400}
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
+        </div>
+      </>
     )
   }
 
@@ -152,7 +172,7 @@ export function InvitacionFlow({ familia, regalos, mensajeSobres, confirmacion }
             textAlign: "center",
           }}
         >
-          <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+          <div style={{ maxWidth: "900px", margin: "0 auto" }}>
             <div
               style={{
                 width: "64px",
