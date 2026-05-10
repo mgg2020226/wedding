@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase/server"
+import { createServiceClient } from "@/lib/supabase/service"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: NextRequest) {
@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const supabase = await createClient()
+    const supabase = createServiceClient()
 
     // Check if family exists and is active
     const { data: familia, error: familiaError } = await supabase
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     if (existingConfirmacion) {
       return NextResponse.json(
-        { error: "Ya existe una confirmacion para esta familia" },
+        { error: "Ya existe una confirmación para esta familia" },
         { status: 400 }
       )
     }
@@ -66,9 +66,9 @@ export async function POST(request: NextRequest) {
       .single()
 
     if (confirmacionError) {
-      console.error("Error creating confirmacion:", confirmacionError)
+      console.error("Error creating confirmación:", confirmacionError)
       return NextResponse.json(
-        { error: "Error al crear confirmacion" },
+        { error: "Error al crear confirmación" },
         { status: 500 }
       )
     }
