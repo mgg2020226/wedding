@@ -19,6 +19,7 @@ const SAGE = "#6B7C51"
 const DARK = "#3A2820"
 const CREAM = "#FAF7F2"
 const MUTED = "#9CAB7C"
+const DEEP = "#8B2442"
 const FONT = "Cormorant Garamond, Georgia, serif"
 
 export function RSVPForm({ familia, regalos: _regalos, mensajeSobres: _mensajeSobres }: RSVPFormProps) {
@@ -113,7 +114,7 @@ export function RSVPForm({ familia, regalos: _regalos, mensajeSobres: _mensajeSo
     <div className="rsvp-form-bold" style={{ minHeight: "100vh", background: CREAM, padding: "clamp(60px, 10vw, 80px) clamp(16px, 5vw, 40px) clamp(40px, 8vw, 60px)" }}>
       <style>{`
         @keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
-        .rsvp-form-bold p, .rsvp-form-bold span, .rsvp-form-bold h1, .rsvp-form-bold h2, .rsvp-form-bold label { font-weight: 700 !important; }
+        .rsvp-form-bold p, .rsvp-form-bold span, .rsvp-form-bold h1, .rsvp-form-bold h2, .rsvp-form-bold label { font-weight: 700 !important; color: #000 !important; }
       `}</style>
       <div style={{ maxWidth: "720px", margin: "0 auto" }}>
 
@@ -128,12 +129,12 @@ export function RSVPForm({ familia, regalos: _regalos, mensajeSobres: _mensajeSo
           {/* Cupos badge */}
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "8px",
-            background: "rgba(228,184,176,0.2)",
-            border: "1px solid rgba(228,184,176,0.5)",
+            background: "rgba(139,36,66,0.08)",
+            border: "1.5px solid rgba(139,36,66,0.5)",
             borderRadius: "999px",
             padding: "6px 18px",
           }}>
-            <svg width="14" height="14" fill="none" stroke={PINK} viewBox="0 0 24 24" strokeWidth="1.8">
+            <svg width="14" height="14" fill="none" stroke={DEEP} viewBox="0 0 24 24" strokeWidth="1.8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
             <span style={{ fontFamily: FONT, fontSize: "0.85rem", color: DARK, letterSpacing: "0.04em" }}>
@@ -343,8 +344,8 @@ export function RSVPForm({ familia, regalos: _regalos, mensajeSobres: _mensajeSo
             style={{
               width: "100%",
               padding: "16px",
-              background: asiste === null ? "rgba(228,184,176,0.4)" : PINK,
-              color: asiste === null ? "#C0B4AE" : "white",
+              background: asiste === null ? "rgba(139,36,66,0.25)" : DEEP,
+              color: asiste === null ? "rgba(139,36,66,0.45)" : "white",
               border: "none",
               borderRadius: "6px",
               fontFamily: FONT,
